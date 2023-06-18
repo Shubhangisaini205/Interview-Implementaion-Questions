@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #progress {
+            width: 60%;
+            height: 20px;
+            background-color: lightseagreen;
+            margin-bottom: 10px;
+        }
+
+        #myprogress {
+            width: 0%;
+            height: 20px;
+            background-color: lightpink;
+        }
+
+        #modal {
+            width: 300px;
+            aspect-ratio: 1/1;
+            background-color: chartreuse;
+            position: absolute;
+            top: 50%;
+            left: 40%;
+            z-index: 1;
+            display: none;
+        }
+
+        #overlay {
+            width: 100%;
+            height: 100vh;
+            background-color: beige;
+            position: fixed;
+            top: 0;
+            opacity: 0;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Slider  -->
+    <h1>Slider</h1>
+    <div>
+        <input type="range" name="slider" id="slider" min="1" max="10" value="2">
+        <p>Slider Range:<span id="sliderRange"></span></p>
+    </div>
+
+    <!-- Progress -->
+    <h1>Progress bar</h1>
+    <div id="progress">
+        <div id="myprogress"></div>
+    </div>
+    <button onclick="ProgressBar()">
+        Click
+    </button>
+
+    <!-- SEarch bar with debouncing -->
+    <h1>Seeach bar with debouncing</h1>
+    <input type="text" id="searchbar">
+    <p>Search OutpuT:<span id="output"></span></p>
+
+
+    <!-- Modal pop up -->
+    <h1>Modal popup</h1>
+    <div id="overlay" onclick="closeModal()"></div>
+    <div id="modal"> </div>
+    <button id="modalBtn" onclick="showModal()">Show Modal</button>
+
+
+</body>
+<script>
+    //Slider
+    let Slider = document.getElementById("slider")
+    let range = document.getElementById("sliderRange"); range.innerText = Slider.value
+    Slider.oninput = function () {
+        range.innerText = this.value
+    }
+
+
+    // Progres
+
+    function ProgressBar() {
+        let bar = document.getElementById("myprogress");
+        let width = 1;
+        let id = setInterval(() => {
+            if (width >= 10) {
+                clearInterval(id)
+            } else {
+                width++;
+                bar.style.width = width + "1%"
+            }
+        }, 200)
+    }
+
+
+    //Searchbar
+    //doubtful
+    let Sbar = document.getElementById("searchbar")
+    let output = document.getElementById("output")
+    Sbar.addEventListener("input", () => {
+        let Id;
+        clearTimeout(Id);
+        Id = setTimeout(() => {
+            output.innerText = Sbar.value
+        }, 2000)
+    })
+
+
+    //MOdal;
+    let modal = document.getElementById("modal")
+    let overlay = document.getElementById("overlay")
+    function showModal() {
+        modal.style.display = "block"
+        overlay.style.opacity=1
+    }
+    function closeModal() {
+        modal.style.display = "none"
+        overlay.style.opacity=0
+    }
+
+</script>
+
+</html>
