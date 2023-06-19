@@ -65,7 +65,7 @@
     <input type="text" id="searchbar">
     <p>Search OutpuT:<span id="output"></span></p>
 
-
+    
     <!-- Modal pop up -->
     <h1>Modal popup</h1>
     <div id="overlay" onclick="closeModal()"></div>
@@ -100,11 +100,10 @@
 
 
     //Searchbar
-    //doubtful
     let Sbar = document.getElementById("searchbar")
     let output = document.getElementById("output")
+    let Id;
     Sbar.addEventListener("input", () => {
-        let Id;
         clearTimeout(Id);
         Id = setTimeout(() => {
             output.innerText = Sbar.value

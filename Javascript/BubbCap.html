@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button>click me</button>
+    </div>
+</body>
+<script>
+    var div = document.querySelector("div")
+    var button = document.querySelector("button")
+
+    // event bubbling;--child to parent;
+
+    // button.addEventListener("click",()=>{
+    //     console.log("buttonx")
+    // })
+    // div.addEventListener("click",()=>{
+    //     console.log("divx")
+    // })
+
+    // event capturing;-- parent to child;
+
+    // button.addEventListener("click",()=>{
+    //     console.log("button")
+    // },true)
+    // div.addEventListener("click",()=>{
+    //     console.log("div")
+    // },true)
+
+
+    //propagation
+
+    div.addEventListener("click",()=>{
+        console.log("divx")
+    })
+
+    button.addEventListener("click",(event)=>{
+        event.stopPropagation()
+        console.log("buttony")
+    })
+
+
+</script>
+</html>
