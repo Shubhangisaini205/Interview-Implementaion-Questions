@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="search" onchange="getData()">
+</body>
+<script>
+    let counter = 0
+    function getData() {
+        console.log("fetchingData" + counter++)
+    }
+    
+    function myDebounce(func, delay) {
+        let timer;
+        return function (...args) {
+            if (timer) clearTimeout(timer);
+             timer = setTimeout(() => {
+                func()
+            }, delay)
+        }
+    }
+
+    const BetterFunction = myDebounce(getData, 500)
+    BetterFunction()
+</script>
+
+</html>
