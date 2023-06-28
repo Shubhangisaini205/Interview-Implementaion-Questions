@@ -10,24 +10,24 @@
 <body>
     <input type="text" id="search" onchange="getData()">
 </body>
+
+
+</html>
 <script>
     let counter = 0
     function getData() {
         console.log("fetchingData" + counter++)
     }
-    
-    function myDebounce(func, delay) {
+
+    function myDebounce(func,delay) {
         let timer;
-        return function (...args) {
+        return function(...args) {
             if (timer) clearTimeout(timer);
-             timer = setTimeout(() => {
+            timer = setTimeout(() => {
                 func()
-            }, delay)
+            }, 1000)
         }
     }
 
-    const BetterFunction = myDebounce(getData, 500)
-    BetterFunction()
+    const BetterFunction = myDebounce(getData,1000)
 </script>
-
-</html>

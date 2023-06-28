@@ -4,13 +4,15 @@ import Memo from './UseMemo/Memo';
 import UseCallBack from './UseMemo/Memo';
 import Parent from './UseCallBack/Parent';
 import SearchBar from './components/SearchBar';
+import ProgressBar from './components/Progress';
 
 function App() {
   return (
     <div className="App">
       {/* <Memo/> */}
       {/* <Parent/> */}
-      <SearchBar/>
+      {/* <SearchBar/> */}
+      <ProgressBar/>
     </div>
   );
 }
